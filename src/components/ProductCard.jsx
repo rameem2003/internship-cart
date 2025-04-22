@@ -7,10 +7,11 @@ import { IoBagHandleOutline, IoEyeOutline } from "react-icons/io5";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router";
+import useCart from "../hooks/useCart";
 
 const ProductCard = ({ product, className }) => {
   const [rating, setRating] = useState(5);
-  const [count, setCount] = useState(0);
+  const { addToCart } = useCart(); // cart hook
 
   const [wishlistVisible, setWishlistVisible] = useState(false);
   const [compareVisible, setCompareVisible] = useState(false);
@@ -109,7 +110,10 @@ const ProductCard = ({ product, className }) => {
           {/*  add cart */}
           <div className="w-full flex mt-6 items-center opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 translate-y-[60px] bg-[rgb(0,0,0,0.5)]">
             {/* add to cart */}
-            <button className="py-[13px] overflow-hidden before:w-full before:h-full before:bg-orange-500 before:absolute before:top-0 z-0 before:z-[-1] before:translate-x-[-500px] hover:before:translate-x-0 before:transition-all before:duration-300 before:left-0 relative flex items-center justify-center grow text-white">
+            <button
+              onClick={() => addToCart(product)}
+              className="py-[13px] cursor-pointer overflow-hidden before:w-full before:h-full before:bg-orange-500 before:absolute before:top-0 z-0 before:z-[-1] before:translate-x-[-500px] hover:before:translate-x-0 before:transition-all before:duration-300 before:left-0 relative flex items-center justify-center grow text-white"
+            >
               <IoBagHandleOutline className="text-[1.3rem]" />
             </button>
           </div>
@@ -138,11 +142,11 @@ const ProductCard = ({ product, className }) => {
           <span className="text-[0.9rem] text-gray-500">(43)</span>
         </div>
 
-        <h3 className="text-[1rem] font-medium text-center mt-0.5 text-gray-900">
-          Drop-shoulder synthetic
+        <h3 className="text-[1rem] font-medium text-center capitalize mt-0.5 text-gray-900">
+          {product?.name}
         </h3>
         <p className="text-center mt-0.5 text-[0.9rem] text-gray-900">
-          Tk 1,800.00
+          ${product?.buying_price}
         </p>
       </div>
     </div>

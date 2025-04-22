@@ -5,10 +5,12 @@ import CartCard from "../components/CartCard";
 
 const CartPage = () => {
   const cart = useSelector((state) => state.cartArray.cart);
-  const grandTotal = cart.reduce(
-    (total, item) => total + item.quantity * item.discountPrice,
+  const subtotal = cart.reduce(
+    (total, item) => total + item.quantity * item.buying_price,
     0
   );
+
+  let grandtotal = 80 + subtotal;
 
   useEffect(() => {
     window.scrollTo({
@@ -43,7 +45,7 @@ const CartPage = () => {
                       Original price
                     </dt>
                     <dd className="text-base font-medium text-gray-900 ">
-                      BDT {grandTotal}
+                      BDT {subtotal}
                     </dd>
                   </dl>
                   <dl className="flex items-center justify-between gap-4">
@@ -56,7 +58,7 @@ const CartPage = () => {
                     <dt className="text-base font-normal text-gray-500 ">
                       Store Pickup
                     </dt>
-                    <dd className="text-base font-medium text-gray-900 ">0</dd>
+                    <dd className="text-base font-medium text-gray-900 ">80</dd>
                   </dl>
                   <dl className="flex items-center justify-between gap-4">
                     <dt className="text-base font-normal text-gray-500 ">
@@ -68,14 +70,14 @@ const CartPage = () => {
                 <dl className="flex items-center justify-between gap-4 border-t border-gray-200 pt-2">
                   <dt className="text-base font-bold text-gray-900 ">Total</dt>
                   <dd className="text-base font-bold text-gray-900 ">
-                    BDT {grandTotal}
+                    BDT {grandtotal}
                   </dd>
                 </dl>
               </div>
               <Link
                 to="/checkout"
                 href="#"
-                className="flex w-full items-center justify-center rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-orange-700 "
+                className="flex w-full items-center justify-center rounded-lg bg-orange-300 px-5 py-2.5 text-sm font-medium text-white hover:bg-orange-700 "
               >
                 Proceed to Checkout
               </Link>
@@ -124,7 +126,7 @@ const CartPage = () => {
                 </div>
                 <button
                   type="submit"
-                  className="flex w-full items-center justify-center rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-primary-300 "
+                  className="flex w-full items-center justify-center rounded-lg bg-orange-300 px-5 py-2.5 text-sm font-medium text-white hover:bg-orange-700 focus:outline-none focus:ring-4 focus:ring-primary-300 "
                 >
                   Apply Code
                 </button>

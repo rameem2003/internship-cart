@@ -4,7 +4,8 @@ import RootLayout from "./layout/RootLayout";
 import Home from "./pages/Home";
 import ProductPage from "./pages/ProductPage";
 import CartPage from "./pages/CartPage";
-import Checkout from "./components/Checkout";
+import Checkout from "./pages/Checkout";
+import OrderSuccess from "./pages/OrderSuccess";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/success" element={<OrderSuccess />} />
         </Route>
       </Routes>
     </BrowserRouter>

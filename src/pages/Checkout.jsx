@@ -211,7 +211,7 @@ const Checkout = () => {
               <button
                 //   onClick={handleSubmit(checkout)}
                 type="submit"
-                className="w-full bg-orange-300 text-white py-3 px-4 rounded-lg hover:bg-orange-700 transition-colors"
+                className="w-full cursor-pointer bg-orange-300 text-white py-3 px-4 rounded-lg hover:bg-orange-700 transition-colors"
               >
                 PLACE ORDER
               </button>
